@@ -22,10 +22,10 @@ function ProjectsList(props) {
     },[])
 
 
-    let Loggedin = false
+    
 
     const addForm = () => {
-        if(Loggedin) {
+        if(props.loggedIn) {
             return(
                 <div>You are logged in</div>
             )
@@ -40,7 +40,16 @@ function ProjectsList(props) {
     <div>
         {addForm()}
         {projects.map((project)=> (
-            <ProjectPost image={project.image} />
+            <ProjectPost image={project.image} 
+            name={project.name}
+            WIP={project.WIP}
+            desc={project.desc}
+            //todo={project.todo}
+            //fix above typeerror not a function
+            //might be because not multiple in array yet
+            //
+
+            />
         ))}
     </div>
   )
