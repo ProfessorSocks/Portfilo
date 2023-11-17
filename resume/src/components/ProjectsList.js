@@ -20,14 +20,71 @@ function ProjectsList(props) {
     useEffect(()=>{
         getProjects()
     },[])
+////////// Delete / post project functions
 
+    const [projectName, setProjectName] = useState('')
+    const [projectDesc, setProjectDesc] = useState('')
 
+    const postProject = async() => {
+        const newProject = {
+          name: projectName,
+          desc: projectDesc,  
+        }
+        try{
+            const resp = await fetch(PROJECT_END, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newProject),
+            } );
+            if (resp.ok) {
+                const newProjects = await resp.json();
+                setProjects ([...projects, newProjects]);
+                setProjectName('');
+                setProjectDesc('')
+            }
+        }catch(e){
+            console.log(`Post Project had an error ${e}`)
+        }
+    }
+
+    const projectDeleteFunction = async (id) => {
+        try{
+            const resp = await fetch(`${PROJECT_END}/${id}` , {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+            if (resp.ok){
+                getProjects()
+            }
+        }catch (e) {
+            console.log(`delete project had and error ${e}`)
+        }
+    } 
+
+    
+    
     
 
     const addForm = () => {
-        if(props.loggedIn) {
+        if(props.loggedInUsername === 'Camille') {
             return(
-                <div>You are logged in</div>
+                <div>
+                    <form>
+                        <input placeholder='Name of project' value={projectName} onChange={(e)=> setProjectName(e.target.value)}/>
+                        <textarea placeholder='Enter information about project here' value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)}/>
+                    </form>
+                    <button onClick={postProject}>Submit</button>
+                </div>
+                
+                
+            )
+        }else if(props.loggedIn){
+            return(
+                <div>you are logged in</div>
             )
         }else{
             return(
@@ -40,16 +97,22 @@ function ProjectsList(props) {
     <div>
         {addForm()}
         {projects.map((project)=> (
-            <ProjectPost image={project.image} 
+            <ProjectPost image={project.image}
+            id={project.id}
             name={project.name}
             WIP={project.WIP}
             desc={project.desc}
+            loggedIn={props.loggedIn}
+            loggedInUsername={props.loggedInUsername}
+            projectDeleteFunction={projectDeleteFunction}
             //todo={project.todo}
             //fix above typeerror not a function
             //might be because not multiple in array yet
             //
 
             />
+            
+
         ))}
     </div>
   )

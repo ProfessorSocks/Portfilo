@@ -38,8 +38,11 @@ function App() {
   //     console.log('error')
   //   }
   // }
-  const [USER_INFO,setUSER_INFO] = useState({});
+  const [USER_INFO,setUSER_INFO] = useState([]);
 
+
+
+///////////// Login and logout functions
   const loggedInFunction = async () => {
     try{
       const resp = await fetch(`${USERS_END}?username=${username}`);
@@ -49,13 +52,21 @@ function App() {
         console.log(USER_INFO[0].username);
         if(USER_INFO[0].password === password){
           setLoggedIn(true)
-          setCookie(username, USER_INFO[0].id, 0.1);
+          setCookie(username, USER_INFO[0].id, 1);
         }
       }
     }catch (e){
       console.log(`loggedInFunction had an error: ${e}`);
     }
     
+  }
+
+  function logoutFunction(){
+    deleteCookies(USER_INFO.username, USER_INFO.id);
+    setUSER_INFO([]);
+    setUsername('');
+    setLoggedIn(false)
+
   }
 
 
@@ -81,11 +92,16 @@ function App() {
 
   const [newAccountUsername,setNewAccountUsername] = useState('');
   const [newAccountPassword, setNewAccountPassword] = useState('');
-  const [newAccountInterests,setNewAccountInterests] = useState([]);
+  const [newAccountInterests,setNewAccountInterests] = useState('');
   const [newAccount, setNewAccount] = useState()
 
   const [creationSuccess, setCreationSuccess] = useState(false)
 
+
+
+
+
+////updating accounts deleting/creating
 
   const postAccount = async () => {
     const newAccountInterestsArray = newAccountInterests.split(',');
@@ -108,6 +124,7 @@ function App() {
         setCreationSuccess(true);
         setNewAccountUsername('');
         setNewAccountPassword('');
+        setNewAccountInterests('')
         } 
     }catch (e) {
         console.log(`PostAccount had an error: ${e}`);
@@ -137,22 +154,42 @@ function App() {
     const expirationDate = new Date();
     expirationDate.setDate(expirationDate.getDate() + days);
   
-    const cookie = `${name}=${value}; expires=${expirationDate.toUTCString()}; path=/`;
+    const cookie = `logged=${name}=${value}; expires=${expirationDate.toUTCString()}; path=/`;
     document.cookie = cookie;
   };
 
-  const getCookie = (name) => {
+  const getCookie = () => {
     const cookies = document.cookie.split('; ');
+    console.log("cookies = " + cookies)
     for (let i = 0; i < cookies.length; i++) {
       const cookie = cookies[i].split('=');
-      if (cookie[0] === name) {
-        return cookie[1];
+      console.log("cookie = " + cookie)
+      if (cookie[0] === 'logged') {
+        console.log("cookie success");
+        getCookieLogin(cookie[2]);
       }
     }
     return null;
   };
 
+  const getCookieLogin = async (cookieid) => {
+    try{
+      const resp = await fetch(`${USERS_END}/${cookieid}`);
+      const USER_INFO = await resp.json();
+      if(resp.ok){
+        setUSER_INFO(USER_INFO);
+        console.log(USER_INFO.username);
+        setLoggedIn(true)
+        setUsername(USER_INFO.username)
+      }
+    }catch (e){
+      console.log(`getcookie had an error: ${e}`);
+    }
+  }
 
+  const deleteCookies = (username, id) => {
+    document.cookie = `logged=${username}=${id}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  };
 
 
 
@@ -163,7 +200,9 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/Gallery' element={<Gallery/>}/>
-        <Route path='/Projects' element={<ProjectsList loggedIn={loggedIn}/>} />
+        <Route path='/Projects' element={<ProjectsList 
+          loggedIn={loggedIn}
+          loggedInUsername={username}/>} />
         <Route path='/Login' element={<Login loggedInFunction={loggedInFunction} 
           updateUsername={updateUsername} 
           updatePassword={updatePassword}
@@ -173,6 +212,13 @@ function App() {
           postAccount={postAccount}
           accountDeleteFunction={accountDeleteFunction}
           USERS={USERS}
+          logoutFunction={logoutFunction}
+          setNewAccountUsername={setNewAccountUsername}
+          setNewAccountPassword={setNewAccountPassword}
+          setNewAccountInterests={setNewAccountInterests}
+          newAccountUsername={newAccountUsername}
+          newAccountPassword={newAccountPassword}
+          newAccountInterests={newAccountInterests}
           />}/>
       </Routes>
     </div>
