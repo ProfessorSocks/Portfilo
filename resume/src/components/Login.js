@@ -31,7 +31,7 @@ function Login(props) {
                 return(
                     <div>
                         <input placeholder='New Account Username' value={props.newAccountUsername} onChange={(e)=> props.setNewAccountUsername(e.target.value)}/>
-                        <input placeholder='New Account Password' value={props.newAccountPassword} onChange={(e)=> props.setNewAccountPassword(e.target.value)}/>
+                        <input type='password' placeholder='New Account Password' value={props.newAccountPassword} onChange={(e)=> props.setNewAccountPassword(e.target.value)}/>
                         <br/>
                         Choose interests from things you're interested in seeing my work in
                         Examples are react, javascript, raspberry pi and python
@@ -72,7 +72,7 @@ function Login(props) {
     <div>
         <form>
             <input placeholder='name' value={props.loggedInUsernamesername} onChange={(e) => props.updateUsername(e.target.value)} />
-            <input placeholder='password' value={props.loggedInPassword} onChange={(e) => props.updatePassword(e.target.value)}/>
+            <input type='' placeholder='password' value={props.loggedInPassword} onChange={(e) => props.updatePassword(e.target.value)}/>
         </form>
         <button onClick={props.logoutFunction}>Logout</button>
         <button onClick={()=>props.loggedInFunction()}>Log in</button>

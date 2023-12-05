@@ -16,10 +16,12 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  
+  // this is called from login.js
   function updateUsername(username) {
     setUsername(username);
   }
-
+  //this is called from login.js
   function updatePassword(password){
     setPassword(password);
   }
@@ -55,6 +57,7 @@ function App() {
           setCookie(username, USER_INFO[0].id, 1);
         }
       }
+      getCookie()//this resets the userinfo back to being called by id instead of username so you don't have to use[]
     }catch (e){
       console.log(`loggedInFunction had an error: ${e}`);
     }
@@ -70,6 +73,7 @@ function App() {
   }
 
 
+///////////// Get Users
 
   const[USERS, setUSERS] = useState([])
 
@@ -84,7 +88,7 @@ function App() {
   }
   useEffect(()=>{
     getUsers();
-    getCookie()
+    getCookie();
 
   }, [])
 
@@ -101,7 +105,7 @@ function App() {
 
 
 
-////updating accounts deleting/creating
+//updating accounts deleting/creating
 
   const postAccount = async () => {
     const newAccountInterestsArray = newAccountInterests.split(',');
@@ -191,19 +195,23 @@ function App() {
     document.cookie = `logged=${username}=${id}; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
 
-
+////////////////
 
   return (
     <div>
       <NavbarMain/>
 
       <Routes>
-        <Route path='/' element={<Home/>} />
+        <Route path='/' element={<Home 
+          loggedIn={loggedIn}
+          loggedInUsername={username}
+          USER_INFO={USER_INFO}/>} />
         <Route path='/Gallery' element={<Gallery/>}/>
         <Route path='/Projects' element={<ProjectsList 
           loggedIn={loggedIn}
           loggedInUsername={username}/>} />
-        <Route path='/Login' element={<Login loggedInFunction={loggedInFunction} 
+        <Route path='/Login' element={<Login  
+          loggedInFunction={loggedInFunction} 
           updateUsername={updateUsername} 
           updatePassword={updatePassword}
           LoggedInPassword={password} 
