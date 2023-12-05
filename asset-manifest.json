@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Portiflo/static/css/main.9433d907.css",
-    "main.js": "/Portiflo/static/js/main.82c1566e.js",
-    "static/js/787.883ba16e.chunk.js": "/Portiflo/static/js/787.883ba16e.chunk.js",
-    "static/media/logo.svg": "/Portiflo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/Portiflo/index.html",
-    "main.9433d907.css.map": "/Portiflo/static/css/main.9433d907.css.map",
-    "main.82c1566e.js.map": "/Portiflo/static/js/main.82c1566e.js.map",
-    "787.883ba16e.chunk.js.map": "/Portiflo/static/js/787.883ba16e.chunk.js.map"
+    "main.css": "/Portfilo/static/css/main.9433d907.css",
+    "main.js": "/Portfilo/static/js/main.f7beb310.js",
+    "static/js/787.883ba16e.chunk.js": "/Portfilo/static/js/787.883ba16e.chunk.js",
+    "static/media/logo.svg": "/Portfilo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Portfilo/index.html",
+    "main.9433d907.css.map": "/Portfilo/static/css/main.9433d907.css.map",
+    "main.f7beb310.js.map": "/Portfilo/static/js/main.f7beb310.js.map",
+    "787.883ba16e.chunk.js.map": "/Portfilo/static/js/787.883ba16e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9433d907.css",
-    "static/js/main.82c1566e.js"
+    "static/js/main.f7beb310.js"
   ]
 }
