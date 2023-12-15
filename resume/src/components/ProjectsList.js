@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ProjectPost from './ProjectPost'
+import { Link, Route, Routes } from 'react-router-dom';
+import ProjectSubPage from './ProjectSubPage';
 
 function ProjectsList(props) {
 
@@ -22,13 +24,16 @@ function ProjectsList(props) {
     },[])
 ////////// Delete / post project functions
 
-    const [projectName, setProjectName] = useState('')
-    const [projectDesc, setProjectDesc] = useState('')
+    const [projectName, setProjectName] = useState('');
+    const [projectDesc, setProjectDesc] = useState('');
+    const [projectTodo, setProjectTodo] = useState('');
 
     const postProject = async() => {
+        let newProjectTodo = projectTodo.split(',');
         const newProject = {
           name: projectName,
-          desc: projectDesc,  
+          desc: projectDesc,
+          todo: newProjectTodo,  
         }
         try{
             const resp = await fetch(PROJECT_END, {
@@ -76,6 +81,7 @@ function ProjectsList(props) {
                     <form>
                         <input placeholder='Name of project' value={projectName} onChange={(e)=> setProjectName(e.target.value)}/>
                         <textarea placeholder='Enter information about project here' value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)}/>
+                        <textarea placeholder='Todo separate by ,' value={projectTodo} onChange={(e)=> setProjectTodo(e.target.value)}/>
                     </form>
                     <button onClick={postProject}>Submit</button>
                 </div>
@@ -105,6 +111,7 @@ function ProjectsList(props) {
             loggedIn={props.loggedIn}
             loggedInUsername={props.loggedInUsername}
             projectDeleteFunction={projectDeleteFunction}
+            todo={project.todo}
             //todo={project.todo}
             //fix above typeerror not a function
             //might be because not multiple in array yet
@@ -114,6 +121,10 @@ function ProjectsList(props) {
             
 
         ))}
+        <br></br>
+        <Routes>
+            <Route path="/Projects/1" element={<ProjectSubPage/>}/>
+        </Routes>
     </div>
   )
 }

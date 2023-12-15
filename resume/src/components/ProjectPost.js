@@ -1,7 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function ProjectPost(props) {
-
+  
 
   function handleProjectDelete(){
     props.projectDeleteFunction(props.id)
@@ -24,13 +25,15 @@ function ProjectPost(props) {
 
   return (
     <div>
-        <img src={props.image}/>
-        <h2>{props.name}</h2>
-        <p>{props.desc}</p>
-        {props.todo?.map((thing)=> (
-            <h6>{thing}</h6>
-        ))}
-        {ifLoggedInDisplay()}
+        <Link to={`/Projects/${props.id}`}>
+          <img src={props.image}/>
+          <h2>{props.name}</h2>
+          <p>{props.desc}</p>
+          {props.todo?.map((thing)=> (
+              <h6>{thing}</h6>
+          ))}
+          {ifLoggedInDisplay()}
+        </Link>
     </div>
   )
 }
