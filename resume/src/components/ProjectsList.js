@@ -9,6 +9,9 @@ function ProjectsList(props) {
 
     const [projects, setProjects] = useState([]);
 
+
+
+
     const getProjects = async () => {
         try{
             const resp = await fetch(PROJECT_END);
@@ -27,13 +30,18 @@ function ProjectsList(props) {
     const [projectName, setProjectName] = useState('');
     const [projectDesc, setProjectDesc] = useState('');
     const [projectTodo, setProjectTodo] = useState('');
+    const [projectKeys, setProjectKeys] = useState('');
+    const [wip, setWip] = useState('false');
 
     const postProject = async() => {
         let newProjectTodo = projectTodo.split(',');
+        let newProjectKeys = projectKeys.split(',');
         const newProject = {
           name: projectName,
           desc: projectDesc,
-          todo: newProjectTodo,  
+          todo: newProjectTodo,
+          WIP: wip,
+          keys: newProjectKeys
         }
         try{
             const resp = await fetch(PROJECT_END, {
@@ -82,6 +90,11 @@ function ProjectsList(props) {
                         <input placeholder='Name of project' value={projectName} onChange={(e)=> setProjectName(e.target.value)}/>
                         <textarea placeholder='Enter information about project here' value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)}/>
                         <textarea placeholder='Todo separate by ,' value={projectTodo} onChange={(e)=> setProjectTodo(e.target.value)}/>
+                        <textarea placeholder='Keys separate by ,' value={projectKeys} on onChange={(e)=> setProjectKeys(e.target.value)}/>
+                        <div>
+                            WIP?
+                            <div><input type='radio' value='true' name="WIP" onClick={(e)=> setWip(e.target.value)} /><label for="WIP">Yes</label><input type="radio" value="false" name="WIP" onClick={(e)=> setWip(e.target.value)}/><label name="WIP">No</label></div> 
+                        </div>
                     </form>
                     <button onClick={postProject}>Submit</button>
                 </div>
@@ -99,6 +112,10 @@ function ProjectsList(props) {
         }
     }
 
+    function setSelectedProject(id){
+        props.setSelectedProject(id)
+    }
+
   return (
     <div>
         {addForm()}
@@ -112,6 +129,9 @@ function ProjectsList(props) {
             loggedInUsername={props.loggedInUsername}
             projectDeleteFunction={projectDeleteFunction}
             todo={project.todo}
+            wip={project.WIP}
+            keys={project.keys}
+            setSelectedProject={setSelectedProject}
             //todo={project.todo}
             //fix above typeerror not a function
             //might be because not multiple in array yet
@@ -122,9 +142,7 @@ function ProjectsList(props) {
 
         ))}
         <br></br>
-        <Routes>
-            <Route path="/Projects/1" element={<ProjectSubPage/>}/>
-        </Routes>
+        
     </div>
   )
 }

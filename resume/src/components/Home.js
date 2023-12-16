@@ -1,14 +1,27 @@
 import React from 'react'
 
-function interestsFunction(interest){
-  if(interest == "Raspberry Pi")
-    return(
-      <div></div>
-    )
-}
+
+
+
+
 
 
 function Home(props) {
+
+  function interestsFunction(interest){
+    if(interest == "Raspberry Pi")
+      return(
+        <div>
+          <p>
+          I see you like projects with raspberry pis. I have several of those.
+          </p>
+          {/* {props.raspberrypiprojects.map((project)=> (
+            <div>{project}</div>
+          ))} */}
+        </div>
+      )
+  }
+
   if(props.loggedInUsername == "Camille"){
     return(
       <h1>Hello Me!</h1>

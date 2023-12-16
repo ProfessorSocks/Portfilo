@@ -7,6 +7,7 @@ import ProjectsList from './components/ProjectsList';
 import NavbarMain from './components/NavbarMain';
 import Login from './components/Login';
 import { useEffect, useState } from 'react';
+import ProjectSubPage from './components/ProjectSubPage';
 
 function App() {
 
@@ -15,6 +16,8 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const[selectedProject, setSelectedProject] = useState(0)
 
   
   // this is called from login.js
@@ -202,14 +205,27 @@ function App() {
       <NavbarMain/>
 
       <Routes>
+        
         <Route path='/' element={<Home 
           loggedIn={loggedIn}
           loggedInUsername={username}
           USER_INFO={USER_INFO}/>} />
         <Route path='/Gallery' element={<Gallery/>}/>
-        <Route path='/Projects' element={<ProjectsList 
-          loggedIn={loggedIn}
-          loggedInUsername={username}/>} />
+        <Route path='/Projects'>
+            <Route path='' element={<ProjectsList
+              loggedIn={loggedIn}
+              loggedInUsername={username}
+              setSelectedProject={setSelectedProject}/>}
+            />
+
+            <Route path=":id" element={<ProjectSubPage
+              selectedProject={selectedProject}/>}
+            />
+        </Route>
+        
+
+        
+            
         <Route path='/Login' element={<Login  
           loggedInFunction={loggedInFunction} 
           updateUsername={updateUsername} 
