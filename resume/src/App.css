@@ -2,3 +2,14 @@
   display: flex;
   justify-content: space-between;
 }
+
+.loginbox{
+  margin-top: 50px;
+  margin-bottom: 200px;
+  margin-left: 30px;
+}
+
+.antilink{
+  text-decoration: none;
+  color: black;
+}

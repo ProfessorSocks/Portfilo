@@ -31,8 +31,11 @@ function ProjectSubPage(props, { match }) {
       <img src={PROJECT_INFO.image}/>
       <div>
         <p>{PROJECT_INFO.desc}</p>
-        <p>{PROJECT_INFO.todo}</p>
         <p>wip? - {PROJECT_INFO.WIP}</p>
+        {PROJECT_INFO.todo?.map((thing)=> (
+              <h6>-> {thing}</h6>
+
+          ))}
       </div>
     </div>
   )

@@ -29,6 +29,7 @@ function ProjectsList(props) {
 
     const [projectName, setProjectName] = useState('');
     const [projectDesc, setProjectDesc] = useState('');
+    const [projectShortDesc, setProjectShortDesc] = useState('');
     const [projectTodo, setProjectTodo] = useState('');
     const [projectKeys, setProjectKeys] = useState('');
     const [wip, setWip] = useState('false');
@@ -41,7 +42,8 @@ function ProjectsList(props) {
           desc: projectDesc,
           todo: newProjectTodo,
           WIP: wip,
-          keys: newProjectKeys
+          keys: newProjectKeys,
+          shortdesc: projectShortDesc
         }
         try{
             const resp = await fetch(PROJECT_END, {
@@ -88,6 +90,7 @@ function ProjectsList(props) {
                 <div>
                     <form>
                         <input placeholder='Name of project' value={projectName} onChange={(e)=> setProjectName(e.target.value)}/>
+                        <textarea placeholder='shortdesc' value={projectShortDesc} onChange={(e) => setProjectShortDesc(e.target.value)}/>
                         <textarea placeholder='Enter information about project here' value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)}/>
                         <textarea placeholder='Todo separate by ,' value={projectTodo} onChange={(e)=> setProjectTodo(e.target.value)}/>
                         <textarea placeholder='Keys separate by ,' value={projectKeys} on onChange={(e)=> setProjectKeys(e.target.value)}/>

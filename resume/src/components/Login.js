@@ -63,26 +63,44 @@ function Login(props) {
     function displayIfLoggedIn(){
         if(props.loggedIn){
             return(
-                <alert>Logged in!</alert>
+                <div>
+                    <h1>Username: {props.loggedInUsername}</h1>
+                    <h2>LOGGED IN</h2>
+                    <br></br>
+                    <button onClick={props.logoutFunction}>Logout</button>
+                </div>
+            )
+        }else if(yesCreate){
+            return(
+                <div>
+                    {createAccountFunc}
+                </div>
+            )
+        }else{
+            return(
+                <div>
+                    <form>
+                    <input placeholder='name' value={props.loggedInUsernamesername} onChange={(e) => props.updateUsername(e.target.value)} />
+                    <input type='' placeholder='password' value={props.loggedInPassword} onChange={(e) => props.updatePassword(e.target.value)}/>
+                    </form>
+                    
+                    <button onClick={()=>props.loggedInFunction()}>Log in</button>
+                    <h2>make an account?</h2>
+                    <button onClick={() => setYesCreate(true)} >Yes</button>
+                </div>
             )
         }
     }
 
   return (
     <div>
-        <form>
-            <input placeholder='name' value={props.loggedInUsernamesername} onChange={(e) => props.updateUsername(e.target.value)} />
-            <input type='' placeholder='password' value={props.loggedInPassword} onChange={(e) => props.updatePassword(e.target.value)}/>
-        </form>
-        <button onClick={props.logoutFunction}>Logout</button>
-        <button onClick={()=>props.loggedInFunction()}>Log in</button>
-        {displayIfLoggedIn()}
-        <br></br>
-        <h2>make an account?</h2>
-        <button onClick={() => setYesCreate(true)} >Yes</button>
-        {createAccountFunc()}
-        <br></br>
-        <br/>
+        <div className='loginbox'>
+            {displayIfLoggedIn()}
+        </div>
+        
+
+        
+        
         <h1>List of Users</h1>
         {props.USERS.map((user)=>(
             <UserProfileLogin 
