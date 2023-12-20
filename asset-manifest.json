@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Portfilo/static/css/main.422777db.css",
-    "main.js": "/Portfilo/static/js/main.886dee12.js",
+    "main.js": "/Portfilo/static/js/main.885c8717.js",
     "static/js/787.883ba16e.chunk.js": "/Portfilo/static/js/787.883ba16e.chunk.js",
     "static/media/logo.svg": "/Portfilo/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/Portfilo/index.html",
     "main.422777db.css.map": "/Portfilo/static/css/main.422777db.css.map",
-    "main.886dee12.js.map": "/Portfilo/static/js/main.886dee12.js.map",
+    "main.885c8717.js.map": "/Portfilo/static/js/main.885c8717.js.map",
     "787.883ba16e.chunk.js.map": "/Portfilo/static/js/787.883ba16e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.422777db.css",
-    "static/js/main.886dee12.js"
+    "static/js/main.885c8717.js"
   ]
 }
