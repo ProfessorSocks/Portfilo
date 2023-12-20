@@ -210,8 +210,8 @@ function App() {
           loggedIn={loggedIn}
           loggedInUsername={username}
           USER_INFO={USER_INFO}/>} />
-        <Route path='Portfilo/Gallery' element={<Gallery/>}/>
-        <Route path='Portfilo/Projects'>
+        <Route path='/Portfilo/Gallery' element={<Gallery/>}/>
+        <Route path='/Portfilo/Projects'>
             <Route path='' element={<ProjectsList
               loggedIn={loggedIn}
               loggedInUsername={username}
@@ -226,7 +226,7 @@ function App() {
 
         
             
-        <Route path='Portfilo/Login' element={<Login  
+        <Route path='/Portfilo/Login' element={<Login  
           loggedInFunction={loggedInFunction} 
           updateUsername={updateUsername} 
           updatePassword={updatePassword}
