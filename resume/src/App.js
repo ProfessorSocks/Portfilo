@@ -206,12 +206,12 @@ function App() {
 
       <Routes>
         
-        <Route path='/' element={<Home 
+        <Route path='/Portfilo' element={<Home 
           loggedIn={loggedIn}
           loggedInUsername={username}
           USER_INFO={USER_INFO}/>} />
-        <Route path='/Gallery' element={<Gallery/>}/>
-        <Route path='/Projects'>
+        <Route path='Portfilo/Gallery' element={<Gallery/>}/>
+        <Route path='Portfilo/Projects'>
             <Route path='' element={<ProjectsList
               loggedIn={loggedIn}
               loggedInUsername={username}
@@ -226,7 +226,7 @@ function App() {
 
         
             
-        <Route path='/Login' element={<Login  
+        <Route path='Portfilo/Login' element={<Login  
           loggedInFunction={loggedInFunction} 
           updateUsername={updateUsername} 
           updatePassword={updatePassword}

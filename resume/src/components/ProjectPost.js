@@ -27,7 +27,7 @@ function ProjectPost(props) {
   return (
     <div>
         <div>
-          <Link to={{pathname: `/Projects/${props.id}`, state: props.id}}>
+          <Link to={{pathname: `Portfilo/Projects/${props.id}`, state: props.id}}>
           <img src={props.image}/>
           <h2>{props.name}</h2>
     

@@ -69,7 +69,7 @@ function Home(props) {
       console.log(listOfIds)
       return(
         <div>
-          <Link to={`Projects/${id}`}>{name}</Link>
+          <Link to={`Portfilo/Projects/${id}`}>{name}</Link>
         </div>
       )
     }
