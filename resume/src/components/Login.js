@@ -29,12 +29,13 @@ function Login(props) {
                 )
             }else{
                 return(
-                    <div>
+                    <div className='app'>
                         <input placeholder='New Account Username' value={props.newAccountUsername} onChange={(e)=> props.setNewAccountUsername(e.target.value)}/>
                         <input type='password' placeholder='New Account Password' value={props.newAccountPassword} onChange={(e)=> props.setNewAccountPassword(e.target.value)}/>
                         <br/>
                         Choose interests from things you're interested in seeing my work in
                         Examples are react, javascript, raspberry pi and python
+                        <br></br>
                         <input placeholder='interests (separate by ,)' value={props.newAccountInterests} onChange={(e)=> props.setNewAccountInterests(e.target.value)} />
                         <button onClick={props.postAccount}>Submit</button>
                     </div>
@@ -67,51 +68,61 @@ function Login(props) {
                     <h1>Username: {props.loggedInUsername}</h1>
                     <h2>LOGGED IN</h2>
                     <br></br>
-                    <button onClick={props.logoutFunction}>Logout</button>
+                    <button className='smalldotbutton' onClick={props.logoutFunction}>Logout</button>
                 </div>
             )
         }else if(yesCreate){
             return(
                 <div>
-                    {createAccountFunc}
+                    {createAccountFunc()}
                 </div>
             )
         }else{
             return(
                 <div>
-                    <form>
-                    <input placeholder='name' value={props.loggedInUsernamesername} onChange={(e) => props.updateUsername(e.target.value)} />
-                    <input type='' placeholder='password' value={props.loggedInPassword} onChange={(e) => props.updatePassword(e.target.value)}/>
-                    </form>
+                    <div>
+                        <div>
+                            <input className='input' placeholder='name' value={props.loggedInUsernamesername} onChange={(e) => props.updateUsername(e.target.value)} />
+                            <input className='input' placeholder='password' value={props.loggedInPassword} onChange={(e) => props.updatePassword(e.target.value)}/>
+                        </div>
+                        <br></br>
+                        <div className='buttondivstyle'>
+                            <button className='smalldotbutton' onClick={()=>props.loggedInFunction()}>Log in</button>
+                        </div>
+                    </div>
                     
-                    <button onClick={()=>props.loggedInFunction()}>Log in</button>
+                    
+                    
+                    
                     <h2>make an account?</h2>
-                    <button onClick={() => setYesCreate(true)} >Yes</button>
+                    <button className='smalldotbutton' onClick={() => setYesCreate(true)} >Yes</button>
                 </div>
             )
         }
     }
 
   return (
-    <div>
-        <div className='loginbox'>
+    <div className='fittopage loginpage'>
+        <div className='loginpagebox loginusers'>
+            <h1>List of Users</h1>
+            {props.USERS.map((user)=>(
+                <UserProfileLogin 
+                    accountDeleteFunction={props.accountDeleteFunction} 
+                    loggedInUsername={props.loggedInUsername}  
+                    username={user.username} 
+                    image={user.image} 
+                    interests={user.interests} 
+                    key={user.id} 
+                    id={user.id}/>
+            ))}
+        </div>
+        <div className='loginpagebox loginbox'>
             {displayIfLoggedIn()}
         </div>
         
 
         
         
-        <h1>List of Users</h1>
-        {props.USERS.map((user)=>(
-            <UserProfileLogin 
-                accountDeleteFunction={props.accountDeleteFunction} 
-                loggedInUsername={props.loggedInUsername}  
-                username={user.username} 
-                image={user.image} 
-                interests={user.interests} 
-                key={user.id} 
-                id={user.id}/>
-        ))}
     </div>
   )
 }

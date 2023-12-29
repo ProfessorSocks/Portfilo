@@ -1,0 +1,34 @@
+.projectsubpage{
+    margin: 30px;
+  }
+  
+.projectpost{
+  margin: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.projecttitle{
+  border-style: dotted;
+  padding: 40px ;
+  background-color: wheat;
+  color: black;
+  text-decoration-thickness:  ;
+}
+
+.projectimage{
+  border-style: solid;
+  width: 400px;
+}
+
+.projectlist{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.projectcommentbox{
+  width:300px;
+  height:100px;
+  
+}

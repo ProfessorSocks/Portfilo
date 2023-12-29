@@ -18,9 +18,9 @@ function UserProfileLogin(props) {
   return (
     <div>
         <h1>{props.username}</h1>
-        <img src={props.image} placeholder={props.image} alt='User chose not to provide an image'/>
+        {/* <img src={props.image} placeholder={props.image} alt='User chose not to provide an image'/> */}
         <p>{props.interests.map((interest)=> (
-            <h6>->{interest}</h6>
+            <h6>-> {interest}</h6>
         ))}</p>
         {accountDeleteHandle()}
     </div>

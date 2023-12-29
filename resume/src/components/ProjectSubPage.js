@@ -25,18 +25,48 @@ function ProjectSubPage(props, { match }) {
   },[])
 
 
-  return (
-    <div>
-      <h1>{PROJECT_INFO.name}</h1>
-      <img src={PROJECT_INFO.image}/>
-      <div>
-        <p>{PROJECT_INFO.desc}</p>
-        <p>wip? - {PROJECT_INFO.WIP}</p>
-        {PROJECT_INFO.todo?.map((thing)=> (
-              <h6>-> {thing}</h6>
+///////////Uploading comments
+  const [commentText,setCommentText] = useState('')
 
-          ))}
+
+
+
+  return (
+    <div className='fittopage '>
+      <div className='containerright'>
+        <div>
+          <h2>Hello {props.loggedInUsername}</h2>
+        </div>
+        <div className=''>
+        hello2
+        {PROJECT_INFO.comments?.map((comment)=>(
+          <div>
+            <h3>{comment.username}</h3>
+            <p>{comment.comment}</p>
+          </div>
+        ))}
+        </div>
       </div>
+      
+      <div className='projectsubpage marginbox '>
+        <h1>{PROJECT_INFO.name}</h1>
+        <img className='projectimage' src={PROJECT_INFO.image}/>
+        <div>
+          <p>{PROJECT_INFO.desc}</p>
+          <p>wip? - {PROJECT_INFO.WIP}</p>
+          {PROJECT_INFO.todo?.map((thing)=> (
+                <p>-> {thing}</p>
+
+            ))}
+        </div>
+        <div>
+        <h3>Comment here</h3>
+        <textarea className='projectcommentbox'  placeholder='comment text' value={commentText} onChange={(e)=> setCommentText(e.target.value)}></textarea>
+        <br></br>
+        <button className='smalldotbutton'>Click to comment</button>
+        </div>
+      </div>
+      
     </div>
   )
 }

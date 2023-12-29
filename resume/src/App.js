@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './cssfiles/projects.css'
 import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Gallery from './components/Gallery';
@@ -201,7 +202,7 @@ function App() {
 ////////////////
 
   return (
-    <div>
+    <div className='app'>
       <NavbarMain/>
 
       <Routes>
@@ -219,7 +220,7 @@ function App() {
             />
 
             <Route path=":id" element={<ProjectSubPage
-              selectedProject={selectedProject}/>}
+              loggedInUsername={username}/>}
             />
         </Route>
         
