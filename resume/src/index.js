@@ -16,3 +16,15 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+//todo
+/*
+add editing to projectsubpage
+add comments to projectsubpage
+add reason to why you would like this to projectsubpage
+add comments to mockapi should be a dictionary with two strings name and comment
+add tags for interests in interests user pages
+add editing for interests
+add images
+style website - wip
+*/

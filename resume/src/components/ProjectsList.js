@@ -120,30 +120,33 @@ function ProjectsList(props) {
     }
 
   return (
-    <div>
+    <div className='fittopage' >
         {addForm()}
-        {projects.map((project)=> (
-            <ProjectPost image={project.image}
-            id={project.id}
-            name={project.name}
-            WIP={project.WIP}
-            desc={project.desc}
-            loggedIn={props.loggedIn}
-            loggedInUsername={props.loggedInUsername}
-            projectDeleteFunction={projectDeleteFunction}
-            todo={project.todo}
-            wip={project.WIP}
-            keys={project.keys}
-            setSelectedProject={setSelectedProject}
-            //todo={project.todo}
-            //fix above typeerror not a function
-            //might be because not multiple in array yet
-            //
+        <div className='projectlist'>
+            {projects.map((project)=> (
+                <ProjectPost image={project.image}
+                id={project.id}
+                name={project.name}
+                WIP={project.WIP}
+                desc={project.desc}
+                loggedIn={props.loggedIn}
+                loggedInUsername={props.loggedInUsername}
+                projectDeleteFunction={projectDeleteFunction}
+                todo={project.todo}
+                wip={project.WIP}
+                keys={project.keys}
+                setSelectedProject={setSelectedProject}
+                //todo={project.todo}
+                //fix above typeerror not a function
+                //might be because not multiple in array yet
+                //
 
-            />
-            
+                />
+                
 
-        ))}
+            ))}
+        </div>
+        
         <br></br>
         
     </div>

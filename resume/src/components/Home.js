@@ -69,7 +69,7 @@ function Home(props) {
       console.log(listOfIds)
       return(
         <div>
-          <Link to={`Portfilo/Projects/${id}`}>{name}</Link>
+          <Link className='antilink' to={`/Portfilo/Projects/${id}`}>{name}</Link>
         </div>
       )
     }
@@ -99,24 +99,57 @@ function Home(props) {
     )
   }
 
+  function aboutMe(){
+    return(
+      <div className=''>
+        <div className=''>
+          <h3>
+            Hello welcome to my website. I made this website for employers like you to see what I can do!
+            If you head to the project page you can see projects that have I done. If you sign up for an account you can see customized content on the home page
+          </h3>
+        </div>
+        <br></br>
+        <div className='containerleft'>
+          <h2>About me</h2>
+          <p>
+            I am a talented, hardworking young woman. I have a natural affinity for tech. I built my first computer at sixteen. I also picked up coding the same year. I dabbled in python till I was twenty and took my first official computer programming course at the College of Southern Nevada. There I learned Javascript, HTML, and CSS. I graduated with an A and a bright outlook at the world. I then enrolled in their backend course and I am learning Java now. In my spare time I teach myself electrical and mechanical engineering, I train in swimming and running and play with my cats.
+          </p>
+        </div>
+        <br></br>
+        <div className='containerright'>
+          <h2>Qualifications</h2>
+          <p>- Python - Self Taught - 2 years </p>
+          <p>- Front-End Development - College of Southern Nevada - 2023</p>
+          <p>- Electrical HardWare - 1 year</p>
+          <p>- Soldering - 1 year</p>
+        </div>
+        <div></div>
+      </div>
+    )
+  }
+
   if(props.loggedInUsername == "Camille"){
     return(
       <h1>Hello Me!</h1>
     )
   }else if(props.loggedIn){
     return(
-      <div>
+      <div className='fittopage marginbox'>
         <h1>Hello {props.loggedInUsername}</h1>
         <div>{interestsFunction()}</div>
+        {aboutMe()}
       </div>
       
     )
     
   }else{
     return(
-      <div>
+      <div className='fittopage marginbox'>
         <h1>Hey you're not logged in!</h1>
         <p>I suggest you log in to see customized content!</p>
+        {aboutMe()}
+
+
       </div>
     )
   }

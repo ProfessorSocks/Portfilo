@@ -1,15 +1,167 @@
 .navbarcontainer{
   display: flex;
   justify-content: space-between;
+  border-style: dotted;
+  border-width: 10px;
+  font-size: 20px;
+}
+/* .fittopage{
+  height: 100vh !important;
+} */
+#root{
+  background-color: black;
+  min-height: 200dvh;
+  min-width: 100dvw;
+  max-width: 200dvw;
+}
+
+@media screen and (max-width: 1000){
+  #root{
+    min-width: 100dvw;
+    height: 1000px;
+  }
+  .navbarcontainer{
+    font-size: 10px;
+    margin: 1px;
+  }
+  .navbarbutton{
+    width:20px;
+    height:20px;
+    font-size: 10px;
+  }
+}
+
+
+@font-face{
+  font-family: 'CustomFont';
+  src: url('../../resume/public/fonts/RubikDoodleShadow-Regular.ttf') format('truetype');
 }
 
 .loginbox{
   margin-top: 50px;
   margin-bottom: 200px;
+}
+.loginusers{
+  margin-top: 30px;
   margin-left: 30px;
+}
+.loginpage{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.loginpagebox{
+  flex: 1; /* Distribute available space equally */
+  box-sizing: border-box; /* Optional: Include border in width calculation */
 }
 
 .antilink{
   text-decoration: none;
-  color: black;
+  color: wheat;
 }
+.antilink:hover{
+  color: black;
+  background-color: wheat;
+}
+
+.app{
+  background-color: black;
+  color: wheat;
+  font-family: 'CustomFont';
+}
+
+.navbarbutton{
+  width: 200px;
+  height: 20px;
+  background-color: unset;
+  color: wheat;
+  border: none;
+  margin-top: 20px;
+  font-size: 30px;
+  font-family: 'CustomFont';
+}
+
+.navbartitle{
+  margin-left: 20px;
+}
+
+/* .fittopage{
+  min-height: 1200px;
+} */
+
+.smalldotbutton{
+  background-color: unset;
+  color: wheat;
+  border-style: dotted;
+  border-color: wheat;
+  font-size: large;
+  font-family: 'CustomFont';
+}
+.smalldotbutton:hover{
+  background-color: wheat;
+  color: black;
+  font-size: x-large;
+}
+.buttondivstyle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+input{
+  background-color: wheat;
+  color: black !important;
+}
+input::placeholder{
+  color: black;
+  font-family: "customfont";
+}
+
+input:hover{
+  background-color: beige;
+}
+input::placeholder:hover{
+  color: darkgray;
+}
+
+textarea{
+  background-color: wheat;
+  color: black !important;
+  resize: none;
+  border-style: dotted;
+  border-color: black;
+  border-width: 5px;
+}
+textarea::placeholder{
+  color:black;
+  font-family: ;
+}
+textarea:hover{
+  background-color: beige;
+}
+textarea::placeholder:hover{
+  color: darkgray;
+}
+
+.container{
+  display: flex;
+  justify-content: space-around ;
+}
+.containerright{
+  float: right;
+  width: 45%;
+}
+.containerleft{
+  float:left;
+  width: 45%;
+}
+
+.marginbox{
+  margin-left: 30px;
+}
+
+
+
+
+

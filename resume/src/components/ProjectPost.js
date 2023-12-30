@@ -19,22 +19,24 @@ function ProjectPost(props) {
       )
     }else if(props.loggedIn){
       return(
-        <div>hi</div>
+        <div></div>
       )
     }
   }
 
   return (
-    <div>
-        <div>
-          <Link to={{pathname: `Portfilo/Projects/${props.id}`, state: props.id}}>
-          <img src={props.image}/>
-          <h2>{props.name}</h2>
+    <div >
+        <div className='projectpost'>
+          
+          <img className='projectimage' src={props.image}/>
+          <Link className='antilink' to={{pathname: `/Portfilo/Projects/${props.id}`, state: props.id}}>
+          <h2 className='projecttitle'>{props.name}</h2>
     
           
           </Link>
+          {ifLoggedInDisplay()}
         </div>
-        {ifLoggedInDisplay()}
+        
         
     </div>
   )

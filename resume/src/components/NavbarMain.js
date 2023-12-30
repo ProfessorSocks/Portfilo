@@ -4,13 +4,16 @@ import { Link } from 'react-router-dom'
 
 function NavbarMain() {
   return (
-    <div className='navbarcontainer'>
-        <h2>Camille West</h2>
-        <Link to='/Portfilo/'><button>Home</button></Link>
-        <Link to='/Portfilo/Gallery/'><button>Gallery</button></Link>
-        <Link to='/Portfilo/Projects/'><button>Projects</button></Link>
-        <Link to='/Portfilo/Login/'><button>Login</button></Link>
+    <div >
+      <div className='navbarcontainer'>
+        <h2 className='navbartitle'>Camille West</h2>
+        <Link to='/Portfilo/'><button className='navbarbutton'>Home</button></Link>
+        {/* <Link to='/Portfilo/Gallery/'><button className='navbarbutton'>Gallery</button></Link> */}
+        <Link to='/Portfilo/Projects/'><button className='navbarbutton'>Projects</button></Link>
+        <Link to='/Portfilo/Login/'><button className='navbarbutton'>Login</button></Link>
+      </div>
     </div>
+    
   )
 }
 
