@@ -135,7 +135,7 @@ textarea{
 }
 textarea::placeholder{
   color:black;
-  font-family: ;
+  font-family: 'CustomFont' ;
 }
 textarea:hover{
   background-color: beige;
