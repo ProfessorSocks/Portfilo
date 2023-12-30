@@ -66,7 +66,6 @@ function ProjectSubPage(props, { match }) {
         <button className='smalldotbutton'>Click to comment</button>
         </div>
       </div>
-      
     </div>
   )
 }
