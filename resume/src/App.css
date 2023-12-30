@@ -3,14 +3,32 @@
   justify-content: space-between;
   border-style: dotted;
   border-width: 10px;
+  font-size: 20px;
 }
 /* .fittopage{
   height: 100vh !important;
 } */
 #root{
   background-color: black;
-  height: 100vh;
-  width: 100vh;
+  min-height: 200dvh;
+  min-width: 100dvw;
+  max-width: 200dvw;
+}
+
+@media screen and (max-width: 1000){
+  #root{
+    min-width: 100dvw;
+    height: 1000px;
+  }
+  .navbarcontainer{
+    font-size: 10px;
+    margin: 1px;
+  }
+  .navbarbutton{
+    width:20px;
+    height:20px;
+    font-size: 10px;
+  }
 }
 
 
@@ -58,14 +76,13 @@
   background-color: unset;
   color: wheat;
   border: none;
-  font-size: xx-large;
   margin-top: 20px;
+  font-size: 30px;
   font-family: 'CustomFont';
 }
 
 .navbartitle{
   margin-left: 20px;
-  font-size: xx-large;
 }
 
 /* .fittopage{
